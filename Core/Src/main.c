@@ -102,14 +102,14 @@ int main(void)
   MX_SPDIFRX_Init();
   /* USER CODE BEGIN 2 */
 	
-	/* Инициализируем буфер приема нулями */
+	/* Initialize buffers */
   for(uint32_t j = 0; j<BUF_SIZE; j++)
   {
     RX_Data_Buf[j] = 0;
 		RX_Control_Buf[j] = 0;
   }
 
-	/* Start SPDIFRX audio Reception in DMA circular mode */ // пример с polling mode есть в проекте loopback
+	/* Start SPDIFRX audio Reception in DMA circular mode */
   HAL_SPDIFRX_ReceiveDataFlow_DMA(&hspdif, (uint32_t *)RX_Data_Buf, BUF_SIZE);
 	HAL_SPDIFRX_ReceiveControlFlow_DMA(&hspdif, (uint32_t *)RX_Control_Buf, BUF_SIZE);
   
